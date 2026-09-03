@@ -1,0 +1,58 @@
+name: Publish Package to GitHub Packages & Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+    branches:
+      - main
+  release:
+    types: [published]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: write
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install Build Tools
+        run: |
+          python -m pip install --upgrade pip
+          pip install build twine
+
+      - name: Build Package (Wheel & Sdist)
+        run: |
+          python -m build
+
+      - name: Create Portable Zip Release
+        run: |
+          zip -r dist/voice-calling-agent-portable.zip app.py cartesia_client.py elevenlabs_client.py piper_client.py run.bat run.sh requirements.txt .env.example README.md LICENSE static webagent
+
+      - name: Publish to GitHub Packages PyPI Registry
+        env:
+          TWINE_USERNAME: ${{ github.actor }}
+          TWINE_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
+          TWINE_REPOSITORY_URL: https://pypi.pkg.github.com/${{ github.repository_owner }}
+        run: |
+          python -m twine upload --repository-url https://pypi.pkg.github.com/${{ github.repository_owner }} dist/*.whl dist/*.tar.gz || true
+
+      - name: Create or Update GitHub Release
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            dist/*.whl
+            dist/*.tar.gz
+            dist/voice-calling-agent-portable.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
