@@ -1,0 +1,24 @@
+# Environment and secret keys
+.env
+*.env
+!.env.example
+
+# Python cache & virtualenv
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+ENV/
+
+# OS & IDE files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Audio temporary files
+*.wav
+*.mp3
+*.pcm
