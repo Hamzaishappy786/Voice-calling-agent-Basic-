@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "voice-calling-agent"
+version = "0.1.0"
+description = "Real-Time AI Voice Call Assistant Web Application"
+readme = "README.md"
+authors = [{ name = "Hamzaishappy786", email = "hn374919@gmail.com" }]
+license = { text = "MIT" }
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "fastapi",
+    "uvicorn[standard]",
+    "httpx",
+    "numpy",
+    "python-multipart",
+    "piper-tts",
+]
+
+[project.urls]
+Homepage = "https://github.com/Hamzaishappy786/Voice-calling-agent-Basic-"
+Repository = "https://github.com/Hamzaishappy786/Voice-calling-agent-Basic-"
+
+[project.scripts]
+voice-agent = "webagent.cli:main"
+webagent = "webagent.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+
+[tool.setuptools.package-data]
+webagent = ["static/*", "static/**/*"]
