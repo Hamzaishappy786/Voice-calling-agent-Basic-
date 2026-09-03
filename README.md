@@ -1,10 +1,13 @@
 # 🎙️ Voice Calling Agent — Real-Time AI Voice Assistant
 
 [![PyPI / pip install](https://img.shields.io/badge/pip%20install-voice--calling--agent-brightgreen.svg)](https://github.com/Hamzaishappy786/Voice-calling-agent-Basic-)
-[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
+[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![Universal Wheel](https://img.shields.io/badge/wheel-py3--none--any-success.svg)](https://github.com/Hamzaishappy786/Voice-calling-agent-Basic-/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-**Voice Calling Agent** (`voice-calling-agent`) is a python package for real-time AI voice calling. It features speech-to-text with **Cartesia Ink Whisper**, fast LLM response generation with **Groq** (plus **Gemini** fallback), and streaming voice synthesis with **Cartesia / ElevenLabs / PiperTTS**.
+**Voice Calling Agent** (`voice-calling-agent`) is a universal Python package and web app for real-time AI voice calling. It features speech-to-text with **Cartesia Ink Whisper**, fast LLM response generation with **Groq** (plus **Gemini** fallback), and streaming voice synthesis with **Cartesia / ElevenLabs / PiperTTS**.
+
+> 💡 **Universal Python Compatibility**: The package is built as a universal wheel (`py3-none-any`), making it compatible with Python **3.8, 3.9, 3.10, 3.11, 3.12, and 3.13+** across Windows, Linux, and macOS.
 
 ---
 
