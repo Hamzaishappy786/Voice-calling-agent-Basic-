@@ -8,7 +8,7 @@ version = "0.1.0"
 description = "Real-Time AI Voice Call Assistant Web Application"
 readme = "README.md"
 authors = [{ name = "Hamzaishappy786", email = "hn374919@gmail.com" }]
-license = { text = "MIT" }
+license = "MIT"
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",

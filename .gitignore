@@ -3,6 +3,11 @@
 *.env
 !.env.example
 
+# Build & packaging artifacts
+dist/
+build/
+*.egg-info/
+
 # Python cache & virtualenv
 __pycache__/
 *.py[cod]
