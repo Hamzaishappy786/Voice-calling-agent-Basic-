@@ -45,14 +45,19 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Lowercase Image Name for GHCR
+        run: |
+          IMAGE="ghcr.io/$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]' | sed 's/-*$//')"
+          echo "IMAGE_NAME=$IMAGE" >> $GITHUB_ENV
+
       - name: Build & Push Container Package to GHCR
         uses: docker/build-push-action@v5
         with:
           context: .
           push: true
           tags: |
-            ghcr.io/${{ github.repository }}:latest
-            ghcr.io/${{ github.repository }}:${{ github.sha }}
+            ${{ env.IMAGE_NAME }}:latest
+            ${{ env.IMAGE_NAME }}:${{ github.sha }}
 
       - name: Publish to GitHub Release
         if: startsWith(github.ref, 'refs/tags/v')
